@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sage's webembeds</title>
+    <meta property="og:title" content="titlee" />
+    <meta property="og:url" content="github.com/sa-g-e" />
+    <meta property="og:description" content="descdription" />
+    <meta name="twitter:image:src" content="https://as1.ftcdn.net/v2/jpg/02/48/42/64/1000_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
+    
+    <script>
+        function getqparam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        const titleparam = getqparam('title');
+        const linkparam = getqparam('url');
+        const descriptionparam = getqparam('description');
+        const imageparam = getqparam('image');
+
+        if (titleparam) {
+            document.title = titleparam;
+            const titl = document.querySelector('meta[property="og:title"]');
+            if (titl) {
+                titl.setAttribute('content', titleparam);
+            }
+        }
+        
+        if (linkparam) {
+            const imgurl = document.querySelector('meta[property="og:url"]');
+            if (imgurl) {
+                imgurl.setAttribute('content', linkparam);
+            }
+        }
+        
+        if (descriptionparam) {
+            const descrip = document.querySelector('meta[property="og:description"]');
+            if (descrip) {
+                descrip.setAttribute('content', descriptionparam);
+            }
+        }
+        
+        if (imageparam) {
+            const img = document.querySelector('meta[name="twitter:image:src"]');
+            if (img) {
+                img.setAttribute('content', imageparam);
+            }
+        }
+    </script>
+</head>
+<body>
+    hi <3
+</body>
+</html>
